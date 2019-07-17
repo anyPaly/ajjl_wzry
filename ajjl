@@ -1,0 +1,85 @@
+//变量rColor需要预先定义。如果您还没有定义该变量，请取消下面一行的注释
+Function func_a(rColor1, rColor2, rColor3,c1, c2, c3)
+	TracePrint "颜色值1为:" &rColor1
+	TracePrint "颜色值2为:" &rColor2
+	TracePrint "颜色值3为:" &rColor3
+	If rColor1 = c1 And rColor2 = c2 And rColor3 = c3 Then
+				TracePrint "已找到颜色值"
+				func_a = 1
+	Else 
+		func_a = 0
+	End If
+End Function
+
+Sub rest_thread()
+	TracePrint "线程已启动。"
+    //休息检测
+    Dim rC1,rC2,rC3
+    Do
+		rC1 = GetPixelColor(228, 889)//F7F7F7
+		rC2 = GetPixelColor(230, 838)//F7F7F7
+		rC3 = GetPixelColor(211, 903)//90C3FF
+		If func_a(rC1, rC2, rC3, "F7F7F7", "F7F7F7", "90C3FF") = 1 Then 
+					x = 230 + Int(Rnd() * 5 + 1)
+					y = 838 + Int(Rnd() * 5 + 1)
+					Tap x, y
+		End If
+			
+		//结算
+		rColor1 = GetPixelColor(188, 492)//2DBFF0
+		rColor2 = GetPixelColor(76, 561)//FFFFFF
+		rColor3 = GetPixelColor(71, 715)//FFFFFF
+		If func_a(rColor1, rColor2, rColor3, "2DBFF0", "FFFFFF", "FFFFFF") = 1 Then
+					x = 71 + Int(Rnd() * 5 + 1)
+					y = 715 + Int(Rnd() * 5 + 1)
+					Tap x, y
+		End If
+		
+		//再次挑战
+		rColor1 = GetPixelColor(27, 1011)//A8ECEC
+		rColor2 = GetPixelColor(52, 1034)//DDF3FB
+		rColor3 = GetPixelColor(55, 1074)//DDF3FB
+		If func_a(rColor1, rColor2, rColor3, "A8ECEC", "DDF3FB", "DDF3FB") = 1 Then
+					x = 55 + Int(Rnd() * 5 + 1)
+					y = 1074 + Int(Rnd() * 5 + 1)
+					Tap x, y
+		End If
+		Delay 2000
+	Loop
+End Sub
+
+Dim rColor1,rColor2,rColor3, x, y
+Thread.Start(rest_thread)
+
+Do
+	//开始闯关
+	rColor1 = GetPixelColor(129, 927)//FFFFFF
+	rColor2 = GetPixelColor(134, 928)//FFFFFF
+	rColor3 = GetPixelColor(139, 922)//3A6C8D
+	If func_a(rColor1, rColor2, rColor3, "FFFFFF", "FFFFFF", "3A6C8D") = 1 Then 
+				x = 139 + Int(Rnd() * 5 + 1)
+				y = 922 + Int(Rnd() * 5 + 1)
+				Tap x, y
+	End If
+	
+	//跳过
+	rColor1 = GetPixelColor(681, 1269)//C8864C
+	rColor2 = GetPixelColor(683, 1184)//7C5332
+	rColor3 = GetPixelColor(684, 1205)//FBEFDD
+	If func_a(rColor1, rColor2, rColor3, "C8864C", "7C5332", "FBEFDD") = 1 Then
+				x = 684 + Int(Rnd() * 5 + 1)
+				y = 1205 + Int(Rnd() * 5 + 1)
+				Tap x, y
+	End If
+	
+	//跳过
+	rColor1 = GetPixelColor(671, 1208)//C08149
+	rColor2 = GetPixelColor(688, 1181)//C07F4E
+	rColor3 = GetPixelColor(694, 1206)//FBEFDD
+	If func_a(rColor1, rColor2, rColor3, "C08149", "C07F4E", "FBEFDD") = 1 Then
+				x = 684 + Int(Rnd() * 5 + 1)
+				y = 1205 + Int(Rnd() * 5 + 1)
+				Tap x, y
+	End If
+	Delay 2000
+Loop
